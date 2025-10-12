@@ -1,0 +1,34 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+    - name: update dnf cache
+      dnf:
+        update_cache: true
+        state: latest
+
+    - name: install latest apache package
+      dnf:
+        name: httpd
+        state: latest
+
+    - name: enabling apache with system.d
+      systemd:
+        name: httpd
+        state: started
+        enabled: true
+
+    - name: adding port 80 to firewall
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+        immediate: true
+
+    - name: adding port 443 to firewall
+      firewalld:
+        service: https
+        permanent: yes
+        state: enabled
+        immediate: true

@@ -1,0 +1,24 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+    - name: remove apache package
+      dnf:
+        name: httpd
+        state: absent
+        autoremove: true
+
+    - name: removing port 80 from firewall
+      firewalld:
+        service: http
+        permanent: yes
+        state: disabled
+
+    - name: removing port 443 from firewall
+      firewalld:
+        service: https
+        permanent: yes
+        state: disabled
+        immediate: true
