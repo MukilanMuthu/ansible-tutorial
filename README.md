@@ -54,3 +54,7 @@ ansible-playbook <playbook_file.yml>
 - Inside the file declare the variable and the value. Eg: `package: package_name`.
 - Once declared, the variable can be called in the playbook and its value will change according to the host. Eg: `"{{package}}"`. Must be in double quotes `" "`.
 
+## Register variable
+- A register variable is a capture variable with captures the execution state of the task in which it was declared. Eg: `register: <register_var>`
+- This can later be used to call a play using `when: <register_var>.changed` to execute when there is a change in the declared task.
+- Make sure not to declare the same register variable on another play, as this may overwrite the change that was previously registered.
