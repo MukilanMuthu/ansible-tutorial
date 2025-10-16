@@ -24,6 +24,7 @@ ansible all --key-file <ssh_private_key_file_location> -i <inventory_file> -m <m
 [defaults]
 inventory=<inventory_file>
 private_key_file=<ssh_private_key_file_location>
+remote_user=<remote user to be used to execute ansible commands>
 ```
 
 - Since the config file mentions two of the parameters written in the command, the command can be simplified.
