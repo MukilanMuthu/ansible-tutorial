@@ -6,7 +6,7 @@
 
     - name: remove apache package
       dnf:
-        name: httpd
+        name: "{{ apache_package_name }}"
         state: absent
         autoremove: true
 

@@ -10,12 +10,12 @@
 
     - name: install latest apache package
       dnf:
-        name: httpd
+        name: "{{apache_package_name}}"
         state: latest
 
     - name: enabling apache with system.d
       systemd:
-        name: httpd
+        name: "{{apache_package_name}}"
         state: started
         enabled: true
 

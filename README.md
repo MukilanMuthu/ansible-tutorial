@@ -47,4 +47,10 @@ ansible all -m dnf -a "name=* state=latest" --become --ask-become-pass
 ``` bash
 ansible-playbook <playbook_file.yml>
 ```
+## Host variables
+- One can also create variables specific to hosts by creating host variables.
+- Create a directory called `host_vars`.
+- Create YAML files in the names of hosts in the inventory. Eg: `192.168.1.50.yml`.
+- Inside the file declare the variable and the value. Eg: `package: package_name`.
+- Once declared, the variable can be called in the playbook and its value will change according to the host. Eg: `"{{package}}"`. Must be in double quotes `" "`.
 
